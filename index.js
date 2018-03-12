@@ -33,8 +33,11 @@ function configureDefaults(options) {
 function defaultSuiteTitle(suite) {
   if (suite.root && suite.title === '') {
       return stripAnsi(this._options.rootSuiteTitle);
+  } else if (this._options.suiteTitleOverride) {
+      return stripAnsi(this._options.suiteTitleOverride);
+  } else {
+      return stripAnsi(suite.title);
   }
-  return stripAnsi(suite.title);
 }
 
 function fullSuiteTitle(suite) {
