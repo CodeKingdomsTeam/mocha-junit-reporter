@@ -192,7 +192,7 @@ MochaJUnitReporter.prototype.getTestcaseData = function(test, err) {
       _attr: {
         name: this._options.testCaseSwitchClassnameAndName ? stripAnsi(test.title) : stripAnsi(test.fullTitle()),
         time: (typeof test.duration === 'undefined') ? 0 : test.duration / 1000,
-        classname: this._options.testCaseSwitchClassnameAndName ? stripAnsi(test.fullTitle()) : stripAnsi(test.title)
+        classname: (this._options.suiteTitleOverride && stripAnsi(this._options.suiteTitleOverride)) || (this._options.testCaseSwitchClassnameAndName ? stripAnsi(test.fullTitle()) : stripAnsi(test.title))
       }
     }]
   };
