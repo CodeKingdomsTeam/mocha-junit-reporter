@@ -213,6 +213,23 @@ MochaJUnitReporter.prototype.getTestcaseData = function(test, err) {
 
     config.testcase.push({failure: failureElement});
   }
+
+  if ( test.stdout ) {
+    config.testcase.push( {
+      'system-out': {
+        _cdata: this.removeInvalidCharacters( test.stdout )
+      }
+    } );
+  }
+
+  if ( test.stderr ) {
+    config.testcase.push( {
+      'system-err': {
+        _cdata: this.removeInvalidCharacters( test.stderr )
+      }
+    } );
+  }
+
   return config;
 };
 
