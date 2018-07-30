@@ -24,7 +24,8 @@ function configureDefaults(options) {
   options.testCaseSwitchClassnameAndName = options.testCaseSwitchClassnameAndName || false;
   options.suiteTitleSeparedBy = options.suiteTitleSeparedBy || ' ';
   options.suiteTitleSeparatedBy = options.suiteTitleSeparatedBy || options.suiteTitleSeparedBy || ' ';
-  options.rootSuiteTitle = options.rootSuiteTitle || 'Root Suite';
+  options.rootSuiteTitle = options.rootSuiteTitle || (process.env.ROOT_SUITE_TITLE !== undefined ? process.env.ROOT_SUITE_TITLE : 'Root Suite');
+  options.useFullSuiteTitle = options.useFullSuiteTitle || process.env.USE_FULL_SUITE_TITLE || false;
   options.testsuitesTitle = options.testsuitesTitle || 'Mocha Tests';
 
   return options;
